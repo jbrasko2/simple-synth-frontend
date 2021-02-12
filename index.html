@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Synth</title>
+    <script src="./node_modules/tone/build/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js"></script>
+</head>
+<style>
+    #keyboard {
+        display: flex;
+    }
+
+    .key {
+        width: 50px;
+        height: 200px;
+        border: 1px solid black;
+    }
+
+    .key:active {
+        background-color: red;
+    }
+</style>
+<body>
+    <div id="keyboard">
+        <div id="C3" class="key"></div>
+        <div id="D3" class="key"></div>
+        <div id="E3" class="key"></div>
+        <div id="F3" class="key"></div>
+        <div id="G3" class="key"></div>
+        <div id="A3" class="key"></div>
+        <div id="B3" class="key"></div>
+        <div id="C4" class="key"></div>
+    </div>
+    <div id="attack"></div>
+    <div id="decay"></div>
+    <div id="sustain"></div>
+    <div id="release"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
