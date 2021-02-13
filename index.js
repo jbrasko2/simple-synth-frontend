@@ -190,7 +190,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<option value="${obj.id}">${obj.name}</option>`
     })
 
-    document.getElementById('preset-options').innerHTML = presetOptions
+        document.getElementById('preset-options').innerHTML = presetOptions
     }
+
+    const loadForm = document.getElementById('preset-load-form')
+    loadForm.addEventListener('submit', getPreset)
+
+    function getPreset(event) {
+        event.preventDefault()
+        let id = event.target.parentNode.querySelector('#preset-selector').value
+        console.log(id)
+    }
+
 })
 
