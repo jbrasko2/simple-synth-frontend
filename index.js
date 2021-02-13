@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showPresets(arr) {
         let presetOptions = arr.map(obj => {
         return `<option value="${obj.id}">${obj.name}</option>`
-    }).join('')
+    })
 
     document.getElementById('preset-options').innerHTML = presetOptions
     }
