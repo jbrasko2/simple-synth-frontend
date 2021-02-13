@@ -172,10 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     release.value = 3
     reverbDial.value = 0.25
     delayDial.value = 0
-    tremSwitch.value = false
+    tremSwitch.state = false
     tremFreq.value = 4
-    chorSwitch.value = false
-    chorus.set({'wet': 0})
+    chorSwitch.state = false
 
     const apiUrl = 'http://localhost:3000/synths/1/presets'
 
@@ -199,7 +198,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function getPreset(event) {
         event.preventDefault()
         let id = event.target.parentNode.querySelector('#preset-selector').value
-        console.log(id)
+        fetch(apiUrl).then(res => res.json()).then(resp => loadPreset(resp[id - 1]))
+    }
+
+    function loadPreset(obj) {
+        waveTypeButton.select(obj.waveTypeButton)
+        filterDial.value = obj.filterDial
+        attack.value = obj.attack
+        decay.value = obj.decay
+        sustain.value = obj.sustain
+        release.value = obj.release
+        reverbDial.value = obj.reverbDial
+        delayDial.value = obj.delayDial
+        tremSwitch.state = obj.tremSwitch
+        tremFreq.value = obj.tremFreq
+        chorSwitch.state = obj.chorSwitch
     }
 
 })
