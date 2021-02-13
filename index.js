@@ -170,15 +170,24 @@ loadButton.addEventListener('click', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+    waveTypeButton.select(3)
     filterDial.value = 3000
     attack.value = 0.1
     decay.value = 1.5
     sustain.value = 0.5
     release.value = 3
-    waveTypeButton.select(3)
     reverbDial.value = 0.25
+    delayDial.value = 0
     tremSwitch.value = false
     tremFreq.value = 4
     chorSwitch.value = false
     chorus.set({'wet': 0})
 })
+
+const apiUrl = 'http://localhost:3000/synths/1/presets'
+
+function getPresets() {
+    fetch(apiURL).then(res => Response.json()).then(resp => {showPresets(resp)})
+}
+
+function showPresets(arr) {}
