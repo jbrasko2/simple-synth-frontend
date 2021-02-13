@@ -1,5 +1,10 @@
 const reverb = new Tone.Reverb({"wet": 0.25}).toDestination()
 const delay = new Tone.PingPongDelay({"wet": 0})
+const tremolo = new Tone.Tremolo({
+    "depth": 0.5,
+    "frequency": 4,
+    "wet": 0
+}).start()
 
 let synth = new Tone.MonoSynth({
     "filterEnvelope" : {
@@ -8,7 +13,7 @@ let synth = new Tone.MonoSynth({
         "sustain": 0.5,
         "release": 3
     }
-}).chain(delay, reverb)
+}).chain(delay, tremolo, reverb)
 
 Tone.Destination.volume.rampTo(-5, 0.9)
 
@@ -39,6 +44,10 @@ let reverbDial = new Nexus.Dial('#reverbDial', {
 let delayDial = new Nexus.Dial('#delayDial', {
     'min': 0,
     'max': 0.5
+})
+
+let tremSwitch = new Nexus.Toggle('#tremSwitch', {
+    'state': false
 })
 
 let attack = new Nexus.Slider('#attack', {
@@ -101,6 +110,14 @@ delayDial.on('change', function(v) {
     delay.set({'wet': v})
 })
 
+tremSwitch.on('change', function(v) {
+    if (v === false) {
+        tremolo.set({'wet': 0})
+    } else {
+        tremolo.set({'wet': 1})
+    }
+})
+
 const saveButton = document.getElementById('save')
 
 saveButton.addEventListener('click', () => {
@@ -126,4 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
     release.value = 3
     waveTypeButton.select(3)
     reverbDial.value = 0.25
+    tremSwitch.value = false
 })
