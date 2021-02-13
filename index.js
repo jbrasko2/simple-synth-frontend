@@ -9,7 +9,7 @@ const tremolo = new Tone.Tremolo({
 }).start()
 const chorus = new Tone.Chorus(1, 2.5, 0.5).start()
 
-let synth = new Tone.MonoSynth({
+const synth = new Tone.MonoSynth({
     "filterEnvelope" : {
         "attack": 0.1,
         "decay": 1.5,
@@ -35,56 +35,56 @@ keys.forEach((key) => {
     })
 })
 
-let waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
+const waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
     'numberOfButtons': 4
 })
 
-let filterDial = new Nexus.Dial('#filterDial', {
+const filterDial = new Nexus.Dial('#filterDial', {
     'min': 0,
     'max': 5000
 })
 
-let reverbDial = new Nexus.Dial('#reverbDial', {
+const reverbDial = new Nexus.Dial('#reverbDial', {
     'min': 0,
     'max': 1
 })
 
-let delayDial = new Nexus.Dial('#delayDial', {
+const delayDial = new Nexus.Dial('#delayDial', {
     'min': 0,
     'max': 0.5
 })
 
-let tremSwitch = new Nexus.Toggle('#tremSwitch', {
+const tremSwitch = new Nexus.Toggle('#tremSwitch', {
     'state': false
 })
 
-let tremFreq = new Nexus.Slider('#tremFreq', {
+const tremFreq = new Nexus.Slider('#tremFreq', {
     'min': 0,
     'max': 10
 })
 
-let chorSwitch = new Nexus.Toggle('#chorSwitch', {
+const chorSwitch = new Nexus.Toggle('#chorSwitch', {
     'state': false
 })
 
-let attack = new Nexus.Slider('#attack', {
+const attack = new Nexus.Slider('#attack', {
     'min': 0.01,
     'max': 2
 })
-let decay = new Nexus.Slider('#decay', {
+const decay = new Nexus.Slider('#decay', {
     'min': 0.01,
     'max': 2
 })
-let sustain = new Nexus.Slider('#sustain', {
+const sustain = new Nexus.Slider('#sustain', {
     'min': 0,
     'max': 1
 })
-let release = new Nexus.Slider('#release', {
+const release = new Nexus.Slider('#release', {
     'min': 0,
     'max': 5
 })
 
-let oscilloscope = new Nexus.Oscilloscope('#oscilloscope')
+const oscilloscope = new Nexus.Oscilloscope('#oscilloscope')
 oscilloscope.connect(Tone.Master)
 
 waveTypeButton.on('change', function(v) {
