@@ -163,12 +163,6 @@ saveButton.addEventListener('click', () => {
     console.log(delay.wet.value)
 })
 
-const loadButton = document.getElementById('load')
-
-loadButton.addEventListener('click', () => {
-    attack.value = 0
-})
-
 document.addEventListener('DOMContentLoaded', () => {
     waveTypeButton.select(3)
     filterDial.value = 3000
@@ -182,18 +176,21 @@ document.addEventListener('DOMContentLoaded', () => {
     tremFreq.value = 4
     chorSwitch.value = false
     chorus.set({'wet': 0})
-})
 
-const apiUrl = 'http://localhost:3000/synths/1/presets'
+    const apiUrl = 'http://localhost:3000/synths/1/presets'
 
-function getPresets() {
-    fetch(apiURL).then(res => Response.json()).then(resp => {showPresets(resp)})
-}
+    function getPresets() {
+        fetch(apiUrl).then(res => res.json()).then(resp => {showPresets(resp)})
+    }
 
-function showPresets(arr) {
-    let presetOptions = arr.map(obj => {
+    getPresets()
+
+    function showPresets(arr) {
+        let presetOptions = arr.map(obj => {
         return `<option value="${obj.id}">${obj.name}</option>`
     }).join('')
 
     document.getElementById('preset-options').innerHTML = presetOptions
-}
+    }
+})
+
