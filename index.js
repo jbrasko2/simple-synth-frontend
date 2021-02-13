@@ -190,4 +190,10 @@ function getPresets() {
     fetch(apiURL).then(res => Response.json()).then(resp => {showPresets(resp)})
 }
 
-function showPresets(arr) {}
+function showPresets(arr) {
+    let presetOptions = arr.map(obj => {
+        return `<option value="${obj.id}">${obj.name}</option>`
+    }).join('')
+
+    document.getElementById('preset-options').innerHTML = presetOptions
+}
