@@ -1,10 +1,13 @@
 const reverb = new Tone.Reverb({"wet": 0.25}).toDestination()
 const delay = new Tone.PingPongDelay({"wet": 0})
+const filter = new Tone.Filter(3000, "lowpass")
 const tremolo = new Tone.Tremolo({
     "depth": 0.5,
     "frequency": 4,
+    "spread": 0,
     "wet": 0
 }).start()
+const chorus = new Tone.Chorus(1, 2.5, 0.5).start()
 
 let synth = new Tone.MonoSynth({
     "filterEnvelope" : {
@@ -13,9 +16,9 @@ let synth = new Tone.MonoSynth({
         "sustain": 0.5,
         "release": 3
     }
-}).chain(delay, tremolo, reverb)
+}).chain(filter, delay, tremolo, chorus, reverb)
 
-Tone.Destination.volume.rampTo(-5, 0.9)
+Tone.Destination.volume.rampTo(-3, 0.1)
 
 
 const keys = document.querySelectorAll(".key")
@@ -36,6 +39,11 @@ let waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
     'numberOfButtons': 4
 })
 
+let filterDial = new Nexus.Dial('#filterDial', {
+    'min': 0,
+    'max': 5000
+})
+
 let reverbDial = new Nexus.Dial('#reverbDial', {
     'min': 0,
     'max': 1
@@ -50,12 +58,21 @@ let tremSwitch = new Nexus.Toggle('#tremSwitch', {
     'state': false
 })
 
+let tremFreq = new Nexus.Slider('#tremFreq', {
+    'min': 0,
+    'max': 10
+})
+
+let chorSwitch = new Nexus.Toggle('#chorSwitch', {
+    'state': false
+})
+
 let attack = new Nexus.Slider('#attack', {
     'min': 0.01,
     'max': 2
 })
 let decay = new Nexus.Slider('#decay', {
-    'min': 0,
+    'min': 0.01,
     'max': 2
 })
 let sustain = new Nexus.Slider('#sustain', {
@@ -80,6 +97,10 @@ waveTypeButton.on('change', function(v) {
     } else {
         synth.oscillator.set({'type': 'sawtooth'})
     }
+})
+
+filterDial.on('change', function(v) {
+    filter.set({'frequency': v})
 })
 
 attack.on('change', function(v) {
@@ -118,6 +139,18 @@ tremSwitch.on('change', function(v) {
     }
 })
 
+tremFreq.on('change', function(v) {
+    tremolo.set({'frequency': v})
+})
+
+chorSwitch.on('change', function(v) {
+    if (v === false) {
+        chorus.set({'wet': 0})
+    } else {
+        chorus.set({'wet': 0.5})
+    }
+})
+
 const saveButton = document.getElementById('save')
 
 saveButton.addEventListener('click', () => {
@@ -137,6 +170,7 @@ loadButton.addEventListener('click', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+    filterDial.value = 3000
     attack.value = 0.1
     decay.value = 1.5
     sustain.value = 0.5
@@ -144,4 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     waveTypeButton.select(3)
     reverbDial.value = 0.25
     tremSwitch.value = false
+    tremFreq.value = 4
+    chorSwitch.value = false
+    chorus.set({'wet': 0})
 })
