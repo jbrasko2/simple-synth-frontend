@@ -164,7 +164,7 @@ saveButton.addEventListener('click', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    waveTypeButton.select(3)
+    waveTypeButton.select(2)
     filterDial.value = 3000
     attack.value = 0.1
     decay.value = 1.5
@@ -202,18 +202,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadPreset(obj) {
-        waveTypeButton.select(obj.waveTypeButton)
-        filterDial.value = obj.filterDial
-        attack.value = obj.attack
-        decay.value = obj.decay
-        sustain.value = obj.sustain
-        release.value = obj.release
-        reverbDial.value = obj.reverbDial
-        delayDial.value = obj.delayDial
-        tremSwitch.state = obj.tremSwitch
-        tremFreq.value = obj.tremFreq
-        chorSwitch.state = obj.chorSwitch
+        waveTypeButton.select(obj.wtb)
+        filterDial.value = obj.fd
+        attack.value = obj.att
+        decay.value = obj.dc
+        sustain.value = obj.sus
+        release.value = obj.rel
+        reverbDial.value = obj.rd
+        delayDial.value = obj.dd
+        tremSwitch.state = obj.ts
+        tremFreq.value = obj.tf
+        chorSwitch.state = obj.cs
     }
 
+    const saveForm = document.getElementById('preset-save-form')
+    saveForm.addEventListener('submit', getParameters)
+
+    function getParameters(event) {
+        event.preventDefault()
+        let name = document.querySelector('#preset-name').value
+        let wtb = waveTypeButton.active
+        let fd = filterDial.value
+        let att = attack.value
+        let dc = decay.value
+        let sus = sustain.value
+        let rel = release.value
+        let rd = reverbDial.value
+        let dd = delayDial.value
+        let ts = tremSwitch.state
+        let tf = tremFreq.value
+        let cs = chorSwitch.state
+
+        let presetObj = {
+            name, wtb, fd, att, dc, sus, rel, rd, dd, ts, tf, cs
+        }
+
+        let config = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(presetObj)
+        }
+
+        fetch(`${apiUrl}`, config)
+    }
+
+
 })
+
 
