@@ -216,9 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const saveForm = document.getElementById('preset-save-form')
-    saveForm.addEventListener('submit', getParameters)
+    saveForm.addEventListener('submit', savePreset)
 
-    function getParameters(event) {
+    function savePreset(event) {
         event.preventDefault()
         let name = document.querySelector('#preset-name').value
         let wtb = waveTypeButton.active
