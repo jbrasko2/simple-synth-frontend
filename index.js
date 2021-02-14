@@ -151,18 +151,6 @@ chorSwitch.on('change', function(v) {
     }
 })
 
-const saveButton = document.getElementById('save')
-
-saveButton.addEventListener('click', () => {
-    console.log(synth.oscillator.type)
-    console.log(synth.envelope.attack)
-    console.log(synth.envelope.decay)
-    console.log(synth.envelope.sustain)
-    console.log(synth.envelope.release)
-    console.log(reverb.wet.value)
-    console.log(delay.wet.value)
-})
-
 document.addEventListener('DOMContentLoaded', () => {
     waveTypeButton.select(2)
     filterDial.value = 3000
@@ -236,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let presetObj = {
             name, wtb, fd, att, dc, sus, rel, rd, dd, ts, tf, cs
         }
+
+        console.log(presetObj)
 
         let config = {
             method: 'POST',
