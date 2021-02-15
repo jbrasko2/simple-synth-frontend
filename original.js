@@ -152,7 +152,92 @@ chorSwitch.on('change', function(v) {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    Preset.loadDefaultPreset()
-    Preset.getPresets()
-    Preset.listenForEvents()
+    waveTypeButton.select(2)
+    filterDial.value = 3000
+    attack.value = 0.1
+    decay.value = 1.5
+    sustain.value = 0.5
+    release.value = 3
+    reverbDial.value = 0.25
+    delayDial.value = 0
+    tremSwitch.state = false
+    tremFreq.value = 4
+    chorSwitch.state = false
+
+    const apiUrl = 'http://localhost:3000/synths/1/presets'
+
+    function getPresets() {
+        fetch(apiUrl).then(res => res.json()).then(resp => {showPresets(resp)})
+    }
+
+    getPresets()
+
+    function showPresets(arr) {
+        let presetOptions = arr.map(obj => {
+        return `<option value="${obj.id}">${obj.name}</option>`
+    })
+
+        document.getElementById('preset-options').innerHTML = presetOptions
+    }
+
+    const loadForm = document.getElementById('preset-load-form')
+    loadForm.addEventListener('submit', getPreset)
+
+    function getPreset(event) {
+        event.preventDefault()
+        let id = document.querySelector('#preset-selector').value
+        fetch(apiUrl).then(res => res.json()).then(resp => loadPreset(resp[id - 1]))
+    }
+
+    function loadPreset(obj) {
+        waveTypeButton.select(obj.wave_type)
+        filterDial.value = obj.filter_dial
+        attack.value = obj.attack_value
+        decay.value = obj.decay_value
+        sustain.value = obj.sustain_value
+        release.value = obj.release_value
+        reverbDial.value = obj.reverb_dial
+        delayDial.value = obj.delay_dial
+        tremSwitch.state = obj.trem_switch
+        tremFreq.value = obj.trem_frequency
+        chorSwitch.state = obj.chorus_switch
+    }
+
+    const saveForm = document.getElementById('preset-save-form')
+    saveForm.addEventListener('submit', savePreset)
+
+    function savePreset(event) {
+        event.preventDefault()
+        let name = document.querySelector('#preset-name').value
+        let wave_type = waveTypeButton.active
+        let filter_dial = filterDial.value
+        let attack_value = attack.value
+        let decay_value = decay.value
+        let sustain_value = sustain.value
+        let release_value = release.value
+        let reverb_dial = reverbDial.value
+        let delay_dial = delayDial.value
+        let trem_switch = tremSwitch.state
+        let trem_frequency = tremFreq.value
+        let chorus_switch = chorSwitch.state
+
+        let presetObj = {
+            name, wave_type, filter_dial, attack_value, decay_value, sustain_value,
+            release_value, reverb_dial, delay_dial, trem_switch, trem_frequency, chorus_switch
+        }
+
+        let config = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(presetObj)
+        }
+
+        fetch(`${apiUrl}`, config)
+        getPresets()
+        saveForm.reset()
+    }
+
 })
