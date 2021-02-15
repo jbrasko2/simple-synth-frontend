@@ -225,8 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
             name, wtb, fd, att, dc, sus, rel, rd, dd, ts, tf, cs
         }
 
-        console.log(presetObj)
-
         let config = {
             method: 'POST',
             headers: {
@@ -237,8 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         fetch(`${apiUrl}`, config)
+        getPresets()
+        saveForm.reset()
     }
-
 
 })
 
