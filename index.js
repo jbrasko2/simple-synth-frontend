@@ -18,8 +18,8 @@ const synth = new Tone.MonoSynth({
     }
 }).chain(filter, delay, tremolo, chorus, reverb)
 
-Tone.Destination.volume.rampTo(-3, 0.1)
 
+Tone.Destination.volume.rampTo(-3, 0.1)
 
 const keys = document.querySelectorAll(".key")
 
@@ -190,17 +190,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadPreset(obj) {
-        waveTypeButton.select(obj.wtb)
-        filterDial.value = obj.fd
-        attack.value = obj.att
-        decay.value = obj.dc
-        sustain.value = obj.sus
-        release.value = obj.rel
-        reverbDial.value = obj.rd
-        delayDial.value = obj.dd
-        tremSwitch.state = obj.ts
-        tremFreq.value = obj.tf
-        chorSwitch.state = obj.cs
+        waveTypeButton.select(obj.wave_type)
+        filterDial.value = obj.filter_dial
+        attack.value = obj.attack_value
+        decay.value = obj.decay_value
+        sustain.value = obj.sustain_value
+        release.value = obj.release_value
+        reverbDial.value = obj.reverb_dial
+        delayDial.value = obj.delay_dial
+        tremSwitch.state = obj.trem_switch
+        tremFreq.value = obj.trem_frequency
+        chorSwitch.state = obj.chorus_switch
     }
 
     const saveForm = document.getElementById('preset-save-form')
@@ -209,20 +209,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function savePreset(event) {
         event.preventDefault()
         let name = document.querySelector('#preset-name').value
-        let wtb = waveTypeButton.active
-        let fd = filterDial.value
-        let att = attack.value
-        let dc = decay.value
-        let sus = sustain.value
-        let rel = release.value
-        let rd = reverbDial.value
-        let dd = delayDial.value
-        let ts = tremSwitch.state
-        let tf = tremFreq.value
-        let cs = chorSwitch.state
+        let wave_type = waveTypeButton.active
+        let filter_dial = filterDial.value
+        let attack_value = attack.value
+        let decay_value = decay.value
+        let sustain_value = sustain.value
+        let release_value = release.value
+        let reverb_dial = reverbDial.value
+        let delay_dial = delayDial.value
+        let trem_switch = tremSwitch.state
+        let trem_frequency = tremFreq.value
+        let chorus_switch = chorSwitch.state
 
         let presetObj = {
-            name, wtb, fd, att, dc, sus, rel, rd, dd, ts, tf, cs
+            name, wave_type, filter_dial, attack_value, decay_value, sustain_value,
+            release_value, reverb_dial, delay_dial, trem_switch, trem_frequency, chorus_switch
         }
 
         let config = {
@@ -240,5 +241,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
-
-
