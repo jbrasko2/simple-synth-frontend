@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getPreset(event) {
         event.preventDefault()
-        let id = event.target.parentNode.querySelector('#preset-selector').value
+        let id = document.querySelector('#preset-selector').value
         fetch(apiUrl).then(res => res.json()).then(resp => loadPreset(resp[id - 1]))
     }
 
