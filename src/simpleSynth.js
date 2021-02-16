@@ -19,10 +19,9 @@ const synth = new Tone.MonoSynth({
 }).chain(filter, delay, tremolo, chorus, reverb)
 
 const piano = new Nexus.Piano('#piano', {
-    'size': [500,125],
     'mode': 'button',
-    'lowNote': 24,
-    'highNote': 60
+    'lowNote': 48,
+    'highNote': 72
 })
 
 const keys = document.querySelectorAll(".key")
@@ -91,8 +90,14 @@ class SimpleSynth {
         
         piano.on('change',function(v) {
             if (v.state === true) {
-                synth.triggerAttack(v.note)
-                console.log(v.note)
+                // if (v.note === 24) {
+                //     synth.triggerAttack('C3')
+                // } else if (v.note === 25) {
+                //     synth.triggerAttack('C#3')
+                // } else if (v.note === 26) {
+                //     synth.triggerAttack('D3')
+                // }
+                synth.triggerAttack(key(v.note))
             } else {
                 synth.triggerRelease()
             }

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jbrasko2/simple-synth-frontend#readme",
   "dependencies": {
+    "midi-note": "^1.0.0",
     "tone": "^14.7.77"
   }
 }
