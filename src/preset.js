@@ -1,6 +1,7 @@
 const apiUrl = 'http://localhost:3000/synths/1/presets'
 const loadForm = document.getElementById('preset-load-form')
 const saveForm = document.getElementById('preset-save-form')
+const presetList = document.getElementById('preset-selector')
 
 class Preset {
     static all = []
@@ -40,15 +41,19 @@ class Preset {
     static getPresets() {
         fetch(apiUrl)
         .then(res => res.json())
-        .then(resp => {this.showPresets(resp)})
+        .then(presetData => {
+            presetData.forEach(preset => {
+                let x = new Preset(preset)
+                x.addToList()
+            })
+        })
     }
 
-    static showPresets(arr) {
-        let presetOptions = arr.map(obj => {
-        return `<option value="${obj.id}">${obj.name}</option>`
-    })
-
-        document.getElementById('preset-options').innerHTML = presetOptions
+    addToList() {
+        let presetOption = document.createElement("option")
+        presetOption.value = this.id
+        presetOption.innerHTML = this.name
+        presetList.appendChild(presetOption)
     }
 
     static getPreset(e) {
@@ -103,7 +108,11 @@ class Preset {
         }
 
         fetch(`${apiUrl}`, config)
-        this.getPresets()
+        .then(res => res.json())
+        .then(resp => {
+            let newPreset = new Preset(resp)
+            newPreset.addToList()    
+        })
         saveForm.reset()
     }
 
