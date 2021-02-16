@@ -4,7 +4,6 @@ const saveForm = document.getElementById('preset-save-form')
 const presetList = document.getElementById('preset-selector')
 
 class Preset {
-    static all = []
     constructor({id, name, wave_type, filter_dial, attack_value, decay_value, sustain_value,
         release_value, reverb_dial, delay_dial, trem_switch, trem_frequency, chorus_switch}) {
         
@@ -21,7 +20,6 @@ class Preset {
         this.trem_switch = trem_switch
         this.trem_frequency = trem_frequency
         this.chorus_switch = chorus_switch
-        Preset.all.push(this)
     }
 
     static loadDefaultPreset() {

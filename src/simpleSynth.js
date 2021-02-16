@@ -18,13 +18,11 @@ const synth = new Tone.MonoSynth({
     }
 }).chain(filter, delay, tremolo, chorus, reverb)
 
-const piano = new Nexus.Piano('#piano', {
+const keyboard = new Nexus.Piano('#keyboard', {
     'mode': 'button',
     'lowNote': 48,
     'highNote': 72
 })
-
-const keys = document.querySelectorAll(".key")
 
 const waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
     'numberOfButtons': 4
@@ -76,27 +74,8 @@ class SimpleSynth {
     }
 
     static listenForChange() {
-        keys.forEach((key) => {
-            key.addEventListener('mousedown', () => {
-                synth.triggerAttack(key.id)
-            })
-        })
-        
-        keys.forEach((key) => {
-            key.addEventListener('mouseup', () => {
-                synth.triggerRelease()
-            })
-        })
-        
-        piano.on('change',function(v) {
-            if (v.state === true) {
-                // if (v.note === 24) {
-                //     synth.triggerAttack('C3')
-                // } else if (v.note === 25) {
-                //     synth.triggerAttack('C#3')
-                // } else if (v.note === 26) {
-                //     synth.triggerAttack('D3')
-                // }
+        keyboard.on('change',function(v) {
+            if (v.state) {
                 synth.triggerAttack(key(v.note))
             } else {
                 synth.triggerRelease()
@@ -148,7 +127,7 @@ class SimpleSynth {
         })
         
         tremSwitch.on('change', function(v) {
-            if (v === false) {
+            if (!v) {
                 tremolo.set({'wet': 0})
             } else {
                 tremolo.set({'wet': 1})
@@ -160,7 +139,7 @@ class SimpleSynth {
         })
         
         chorSwitch.on('change', function(v) {
-            if (v === false) {
+            if (!v) {
                 chorus.set({'wet': 0})
             } else {
                 chorus.set({'wet': 0.5})
