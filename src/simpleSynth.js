@@ -18,6 +18,13 @@ const synth = new Tone.MonoSynth({
     }
 }).chain(filter, delay, tremolo, chorus, reverb)
 
+const piano = new Nexus.Piano('#piano', {
+    'size': [500,125],
+    'mode': 'button',
+    'lowNote': 24,
+    'highNote': 60
+})
+
 const keys = document.querySelectorAll(".key")
 
 const waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
@@ -82,6 +89,14 @@ class SimpleSynth {
             })
         })
         
+        piano.on('change',function(v) {
+            if (v.state === true) {
+                synth.triggerAttack(v.note)
+                console.log(v.note)
+            } else {
+                synth.triggerRelease()
+            }
+        })
         
         waveTypeButton.on('change', function(v) {
             if (v === 0) {
