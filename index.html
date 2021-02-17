@@ -9,38 +9,64 @@
     <script src="node_modules/midi-note/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js"></script>
 </head>
-<style>
-    #keyboard {
-        display: flex;
-    }
-</style>
 <body>
-    <div id="oscilloscope"></div>
-    <div id="keyboard"></div>
-    <div id="waveTypeButton"></div>
-    <div id="filterDial"></div>
-    <div id="attack"></div>
-    <div id="decay"></div>
-    <div id="sustain"></div>
-    <div id="release"></div>
-    <div id="reverbDial"></div>
-    <div id="delayDial"></div>
-    <div id="tremSwitch"></div>
-    <div id="tremFreq"></div>
-    <div id="chorSwitch"></div>
-    <div id="preset-load-container">
-        <form id="preset-load-form" action="index.html">
-            <select id="preset-selector">
-                <option value="" selected disabled>Select Preset</option>
-            </select>
-            <input type="submit" value="Load">
-        </form>
-    </div>
-    <div id="preset-save-container">
-        <form id="preset-save-form" action="index.html">
-            <input id="preset-name" type="text" placeholder="Enter Preset Name">
-            <input type="submit" value="Save">
-        </form>
+    <div id="application">
+        <div class="application-wrapper centered">
+            <div id="synth-container">
+                <div id="title-container">
+                    <h1>Simple Synth</h1>
+                </div>
+                <div id="top-row">
+                    <div id="wtb-container">
+                        <div id="wt-container">
+                            <h3>Sine</h3><h3>Square</h3><h3>Triangle</h3><h3>Sawtooth</h3>
+                        </div>
+                        <div id="waveTypeButton"></div>
+                    </div>
+                    <div id="fd-container">
+                        <h3>Filter</h3>
+                        <div id="filterDial"></div>
+                    </div>
+                    <div id="adsr-container">
+                        <div class="adsr-row">
+                            <h3>Attack</h3><div id="attack"></div>
+                        </div>
+                        <div class="adsr-row">
+                            <h3>Decay</h3><div id="decay"></div>
+                        </div>
+                        <div class="adsr-row">
+                            <h3>Sustain</h3><div id="sustain"></div>
+                        </div>
+                        <div class="adsr-row">
+                            <h3>Release</h3><div id="release"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="reverbDial"></div>
+                <div id="delayDial"></div>
+                <div id="tremSwitch"></div>
+                <div id="tremFreq"></div>
+                <div id="chorSwitch"></div>
+                <div id="oscilloscope"></div>
+                <div id="keyboard-container">
+                    <div id="keyboard"></div>
+                </div>
+            </div>
+            <div id="preset-load-container">
+                <form id="preset-load-form" action="index.html">
+                    <select id="preset-selector">
+                        <option value="" selected disabled>Select Preset</option>
+                    </select>
+                    <input type="submit" value="Load">
+                </form>
+            </div>
+            <div id="preset-save-container">
+                <form id="preset-save-form" action="index.html">
+                    <input id="preset-name" type="text" placeholder="Enter Preset Name">
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
     </div>
     <script src="src/simpleSynth.js"></script>
     <script src="src/preset.js"></script>
