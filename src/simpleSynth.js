@@ -19,10 +19,10 @@ const synth = new Tone.MonoSynth({
 }).chain(filter, delay, tremolo, chorus, reverb)
 
 const keyboard = new Nexus.Piano('#keyboard', {
-    'size': [500,175],
+    'size': [800,175],
     'mode': 'button',
-    'lowNote': 48,
-    'highNote': 72
+    'lowNote': 36,
+    'highNote': 84
 })
 
 const waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {

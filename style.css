@@ -141,6 +141,15 @@ body {
     margin: auto;
 }
 
+#preset-load-container {
+    display: inline-block;
+}
+
+#preset-save-container {
+    display: inline-block;
+    float: right;
+}
+
 #title-container h1 {
     text-align: center;
 }
