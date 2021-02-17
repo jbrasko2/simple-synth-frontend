@@ -94,25 +94,55 @@ body {
 
 #reverb-container {
     display: inline-block;
-    width: 33%;
+    width: 20%;
+}
+
+#reverbDial {
+    width: 100%;
+}
+
+#reverb-container > h3 {
+    text-align: center;
 }
 
 #delay-container {
     display: inline-block;
-    width: 33%;
+    width: 20%;
+}
+
+#delayDial {
+    width: 100%;
+}
+
+#delay-container > h3 {
+    text-align: center;
 }
 
 #effects-container {
     display: inline-block;
-    width: 33%;
+    width: 50%;
 }
 
+#tremolo-container {
+    display: inline-block;
+    width: 40%;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+#chorus-container {
+    display: inline-block;
+    width: 40%;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+#oscilloscope {
+    margin: auto;
+}
 
 #title-container h1 {
     text-align: center;
 }
 
-div {
-    display: block;
-}
 
