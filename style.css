@@ -139,6 +139,7 @@ body {
 
 #oscilloscope {
     margin: auto;
+    margin-bottom: 20px;
 }
 
 #preset-load-container {
