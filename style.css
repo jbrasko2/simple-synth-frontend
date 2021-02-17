@@ -83,6 +83,10 @@ h3 {
     width: 33%;
 }
 
+#adsr-container > h3 {
+    text-align: center;
+}
+
 .adsr-row > h3 {
     display: inline-block;
     margin-right: 20px;

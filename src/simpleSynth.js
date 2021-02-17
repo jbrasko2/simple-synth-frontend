@@ -66,7 +66,9 @@ const release = new Nexus.Slider('#release', {
     'min': 0,
     'max': 5
 })
-const oscilloscope = new Nexus.Oscilloscope('#oscilloscope')
+const oscilloscope = new Nexus.Oscilloscope('#oscilloscope', {
+    'size': [600,150]
+})
 oscilloscope.connect(Tone.Master)
 
 class SimpleSynth {
