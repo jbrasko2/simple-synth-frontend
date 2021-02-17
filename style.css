@@ -75,14 +75,38 @@ body {
 
 .adsr-row > h3 {
     display: inline-block;
-    margin-right: 10px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-right: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .adsr-row > div {
-    display: inline-block;
+    display: inline;
+    float: right;
+    margin-right: 30%;
 }
+
+#middle-row {
+    margin: 30px;
+    width: 100%;
+    height: 25%;
+}
+
+#reverb-container {
+    display: inline-block;
+    width: 33%;
+}
+
+#delay-container {
+    display: inline-block;
+    width: 33%;
+}
+
+#effects-container {
+    display: inline-block;
+    width: 33%;
+}
+
 
 #title-container h1 {
     text-align: center;
