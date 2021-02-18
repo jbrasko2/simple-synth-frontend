@@ -4,6 +4,8 @@ Welcome to the Simple Synth App! This JavaScript-based app allows users to learn
 ## Usage
 The app can be run by visiting https://jbrasko2.github.io/simple-synth-frontend/. Headphones recommended!
 
+Presets can be saved by submiting the save form with a required name. The values of the interface will be stored in a database to be loaded at a later time.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jbrasko2/simple-synth-frontend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/jbrasko2/simple-synth-frontend/blob/master/CODE_OF_CONDUCT.md).
