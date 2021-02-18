@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/synths/1/presets'
+const apiUrl = 'https://simple-synth-backend.herokuapp.com/synths/1/presets'
 const loadForm = document.getElementById('preset-load-form')
 const saveForm = document.getElementById('preset-save-form')
 const presetList = document.getElementById('preset-selector')
