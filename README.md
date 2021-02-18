@@ -4,7 +4,7 @@ Welcome to the Simple Synth App! This JavaScript-based app allows users to learn
 ## Usage
 The app can be run by visiting https://jbrasko2.github.io/simple-synth-frontend/. Headphones recommended!
 
-Presets can be saved by submiting the save form with a required name. The values of the interface will be stored in a database to be loaded at a later time.
+Presets can be saved by submitting the preset save form with a required name. The values of the interface will be stored in a database to be loaded at a later time.
 
 ## Contributing
 
