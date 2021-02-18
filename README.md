@@ -1,5 +1,5 @@
 # Simple Synth App
-Welcome to the Simple Synth App! This JavaScript-based app allows users to learn and experiment with sound synthesis. The Simple Synth is built using the Tone.js web audio framework to generate sound and uses the NexusUI for user interface components.
+Welcome to the Simple Synth App! This JavaScript-based app allows users to learn and experiment with sound synthesis. The Simple Synth is built using the Tone.js web audio framework to generate sound and the NexusUI for user interface components.
 
 ## Usage
 The app can be run by visiting https://jbrasko2.github.io/simple-synth-frontend/. Headphones recommended!
