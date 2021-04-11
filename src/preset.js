@@ -40,7 +40,18 @@ class Preset {
         fetch(apiUrl)
         .then(res => res.json())
         .then(presetData => {
-            presetData.forEach(preset => {
+           let orderedPresets = presetData.sort(function(a, b) {
+               let nameA = a.name.toUpperCase()
+               let nameB = b.name.toUpperCase()
+               if (nameA < nameB) {
+                   return -1
+               }
+               if (nameA > nameB) {
+                   return 1
+               }
+               return 0
+           })
+            orderedPresets.forEach(preset => {
                 let x = new Preset(preset)
                 x.addToList()
             })
