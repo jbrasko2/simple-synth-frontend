@@ -99,7 +99,7 @@ h3 {
     color: black;
     margin-bottom: 10px;
     text-align: center;
-    font-weight: inherit;
+    font-weight: bold;
 }
 
 .tooltip > h3 {
@@ -131,7 +131,7 @@ h3 {
     margin-left: -60px;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip > h3:hover .tooltiptext {
     visibility: visible;
 }
 
