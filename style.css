@@ -99,11 +99,14 @@ h3 {
     color: black;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: inherit;
 }
 
 .tooltip > h3 {
     margin-bottom: 2px;
     display: inline-block;
+    font-weight: normal;
+    font-size: small;
 }
 
 .tooltip .tooltiptext > h4 {
