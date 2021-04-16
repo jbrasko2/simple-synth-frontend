@@ -102,11 +102,11 @@ h3 {
     font-weight: bold;
 }
 
-.tooltip > h3 {
+.tooltip.tooltip-target {
     margin-bottom: 2px;
     display: inline-block;
     font-weight: normal;
-    font-size: small;
+    font-size: smaller;
 }
 
 .tooltip .tooltiptext > h4 {
@@ -131,7 +131,7 @@ h3 {
     margin-left: -60px;
 }
 
-.tooltip h3:hover .tooltiptext {
+.tooltip-target:hover .tooltiptext {
     visibility: visible;
 }
 
