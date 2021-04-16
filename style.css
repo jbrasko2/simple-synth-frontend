@@ -103,6 +103,7 @@ h3 {
 
 .tooltip > h3 {
     margin-bottom: 2px;
+    display: inline-block;
 }
 
 .tooltip .tooltiptext > h4 {
