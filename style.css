@@ -103,6 +103,7 @@ h3 {
 }
 
 .tooltip-target {
+    position: relative;
     margin-bottom: 2px;
     display: inline-block;
     font-weight: normal;
