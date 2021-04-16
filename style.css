@@ -131,7 +131,7 @@ h3 {
     margin-left: -60px;
 }
 
-.tooltip > h3:hover .tooltiptext {
+.tooltip h3:hover .tooltiptext {
     visibility: visible;
 }
 
