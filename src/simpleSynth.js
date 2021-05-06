@@ -22,7 +22,7 @@ const keyboard = new Nexus.Piano('#keyboard', {
     'size': [800,175],
     'mode': 'button',
     'lowNote': 36,
-    'highNote': 84
+    'highNote': 72
 })
 
 const waveTypeButton = new Nexus.RadioButton('#waveTypeButton', {
@@ -84,6 +84,34 @@ class SimpleSynth {
                 synth.triggerRelease()
             }
         })
+
+        const keyMap = {
+            a: 12,
+            w: 13,
+            s: 14,
+            e: 15,
+            d: 16,
+            f: 17,
+            t: 18,
+            g: 19,
+            y: 20,
+            h: 21,
+            u: 22,
+            j: 23,
+            k: 24
+          }
+
+        document.addEventListener('keydown', (event) => {
+        const keyIndex = keyMap[event.key];
+        keyIndex !== undefined && !keyboard.keys[keyIndex]._state.state ? 
+        keyboard.toggleIndex(keyIndex, true) : null;
+        });
+        
+        document.addEventListener('keyup', (event) => {
+        const keyIndex = keyMap[event.key];
+        keyIndex !== undefined && keyboard.keys[keyIndex]._state.state ? 
+        keyboard.toggleIndex(keyIndex, false) : null;
+        });
         
         waveTypeButton.on('change', function(v) {
             if (v === 0) {
