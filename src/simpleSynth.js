@@ -102,15 +102,17 @@ class SimpleSynth {
           }
 
         document.addEventListener('keydown', (event) => {
-        const keyIndex = keyMap[event.key];
-        keyIndex !== undefined && !keyboard.keys[keyIndex]._state.state ? 
-        keyboard.toggleIndex(keyIndex, true) : null;
+            const keyIndex = keyMap[event.key]
+
+            keyIndex !== undefined && !keyboard.keys[keyIndex]._state.state ? 
+            keyboard.toggleIndex(keyIndex, true) : null
         });
         
         document.addEventListener('keyup', (event) => {
-        const keyIndex = keyMap[event.key];
-        keyIndex !== undefined && keyboard.keys[keyIndex]._state.state ? 
-        keyboard.toggleIndex(keyIndex, false) : null;
+            const keyIndex = keyMap[event.key]
+
+            keyIndex !== undefined && keyboard.keys[keyIndex]._state.state ? 
+            keyboard.toggleIndex(keyIndex, false) : null
         });
         
         waveTypeButton.on('change', function(v) {
