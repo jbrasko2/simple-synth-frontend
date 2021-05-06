@@ -33,43 +33,6 @@ h3 {
     display: block;
 }
 
-.white-keys {
-    position: absolute;
-    left: 880px;
-    bottom: 150px;
-    font-family: 'Segoe UI';
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 21px;
-    pointer-events: none;
-}
-
-.black-keys-left {
-    position: absolute;
-    color: white;
-    z-index: 2;
-    bottom: 215px;
-    left: 895px;
-    font-family: 'Segoe UI';
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 18px;
-    pointer-events: none;
-}
-
-.black-keys-right {
-    position: absolute;
-    color: white;
-    z-index: 2;
-    bottom: 215px;
-    left: 1008px;
-    font-family: 'Segoe UI';
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 20px;
-    pointer-events: none;
-}
-
 #keyboard {
     display: block;
     margin: 0 auto;
